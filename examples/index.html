@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Radical Examples</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="examples.css">
+
+    </head>
+    <body>
+      <main>
+
+        <section class='toggle'>
+          <h1>Toggle</h1>
+          <div>
+            <div class='box'></div>
+          </div>
+        </section>
+
+        <section class='neutralize-siblings'>
+          <h1>Neutralize Siblings</h1>
+          <div class='hbox'>
+            <div class='box'></div>
+            <div class='box' data-state='enabled'></div>
+            <div class='box'></div>
+            <div class='box'></div>
+          </div>
+        </section>
+
+        <section class='selection-group-multi-select'>
+          <h1>Selection Group - Multi Select</h1>
+          <div class='hbox'>
+            <div class='box'></div>
+            <div class='box' data-state='enabled'></div>
+            <div class='box'></div>
+            <div class='box'></div>
+          </div>
+        </section>
+
+        <section class='neutralize-ancestor'>
+          <h1>Neutralize Ancestor</h1>
+          <div class='hbox'>
+            <div class='box'></div>
+            <div class='box'></div>
+            <div class='box'></div>
+            <div class='box'></div>
+          </div>
+        </section>
+
+      </main>
+      <script type="text/javascript" src="../src/resig.inheritance.js"></script>
+      <script src="../src/radical.toggle.js"></script>
+      <script src="../src/radical.neutralize.siblings.js"></script>
+      <script src="../src/radical.neutralize.ancestor.js"></script>
+      <script src="../src/radical.selection.group.js"></script>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function(){
+          
+          var toggle = document.querySelectorAll('.toggle .box');
+          Array.prototype.forEach.call(toggle, function(el, i){
+            var t = new Toggle(el,{lock:false});
+            t.element.addEventListener('click',function(){
+              t.options.lock = true;
+            });
+          });
+
+          var neutralizeSiblings = document.querySelectorAll('.neutralize-siblings .box');
+          Array.prototype.forEach.call(neutralizeSiblings, function(el, i){
+            var ns = new NeutralizeSiblings(el);
+          });
+
+          var selectionGroupMultiSelect = document.querySelectorAll('.selection-group-multi-select .hbox');
+          Array.prototype.forEach.call(selectionGroupMultiSelect, function(el, i){
+            var sgms = new SelectionGroup(el,{multipleSelections:true});
+            console.log(sgms);
+          });
+
+        });
+      </script>
+  </body>
+</html>

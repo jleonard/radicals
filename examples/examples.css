@@ -1,0 +1,19 @@
+.box{
+  width: 130px;
+  height: 130px;
+  background-color: cadetblue;
+  border-radius: 80px;
+}
+
+.box[data-state="enabled"]{
+  background-color: green;
+}
+
+.box[data-state="disabled"]{
+  background-color: red;
+}
+
+.hbox .box{
+  float: left;
+  margin-left: 5px;
+}
