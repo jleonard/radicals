@@ -1,0 +1,92 @@
+#grid{
+
+  // creates a grid container. 
+  // grid containers contain columns.
+  // ---------------------------
+  .container(@g:@gutter){
+    #flex > .row();
+    #flex > .wrap();
+
+    align-items: stretch;
+    align-content: flex-start;
+    
+    margin-left: @g / -2;
+    margin-right: @g / -2;
+  }
+
+  // creates a column.
+  // @span : the colspan. number from 1 - 12.
+  // @g : the column gutter
+  // ---------------------------
+  .column(@span:@columns, @g:@gutter){
+    padding-left  : @g / 2;
+    padding-right : @g / 2;
+    position      : relative;
+    width         : percentage(@span / 12);
+  }
+
+  // fixed grid generator
+  // ---------------------------
+  .fixed(@g:@gutter){
+    .container(@g);
+    .iterateColumns(@columns,@g);
+  }
+
+  // responsive grid generator
+  // override this with whatever
+  // media query rules you need.
+  // ---------------------------
+  .responsive(@g:@gutter){
+
+    .container(@g);
+
+    // restricted to small devices
+    @media all and (max-device-width: @phone) {
+      .iterateFullColumns(@columns,@g);
+    }
+
+    // 'mobile first' aka. narrow desktop.
+    .iterateFullColumns(@columns,@g);
+
+    // unstack from tablet width on up.
+    @media all and (min-width: @tablet){
+      .iterateColumns(@columns,@g);
+    }
+
+  }
+
+//
+//   .-"""-.
+//  / _   _ \
+//  ](_' `_)[
+//  `-. x ,-' 
+//    |~~~|
+//    `---'
+//
+// Warning: Mixins below this point should be considered 'private'
+// 
+//
+
+  // fixed column iterator. invoked via #grid.fixed()
+  // @counter : number of columns in the grid
+  // @g  : the column gutter. This really should be called @gutter.
+  // ---------------------------
+  .iterateColumns(@counter,@margin) when (@counter > 0) {
+    .iterateColumns((@counter - 1),@margin);
+    .column-@{counter}{
+      .column(@counter,@margin);
+    }
+  }
+
+  // fixed column iterator. invoked via #grid.fixed()
+  // @counter : number of columns in the grid
+  // @g  : the column gutter. This really should be called @gutter.
+  // ---------------------------
+  .iterateFullColumns(@counter,@margin) when (@counter > 0) {
+    .iterateFullColumns((@counter - 1),@margin);
+    .column-@{counter}{
+      .column(12,@margin);
+    }
+  }
+
+}

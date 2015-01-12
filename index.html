@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>UI Radicals</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href="css/main.css" media="all" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+      <main>
+        <section class='intro'>
+  <div>
+    <h1>What are radicals?</h1>
+
+    <p class='major'>Radicals are a prototyping tool &amp; teaching method for crafting user interfaces. In the contect of a UI, <mark>radicals are granular patterns of UI functionality</mark>.</p>
+
+    <h2>Why <em>&ldquo;radicals&rdquo;</em>?</h2>
+    <h3>Radicals in Japanese</h3>
+    <p>In the Japanese alphabet, a radical is a common sub-element found across different characters. Every character has a radical and radicals can be characters on their own.</p> 
+
+    <h4>Example</h4>
+    <table class='kanji-radicals'>
+      <thead>
+        <tr>
+          <th>Radical</th>
+          <th>Characters</th>
+        </tr>
+      </thead>
+    </table>
+
+    <p class='note'>Notice how each radical is applied to various characters.</p>
+    
+    <h3>Radicals in Chemistry</h3>
+
+
+    <h2>Comparing Radicals &amp; Components</h2>
+    <p></p>
+
+    <p>In the context of a UI, radicals are the granular pieces of UI functionality. Each can stand on its own or be combined with other radicals to create new forms of interaction.</p>
+
+  </div>
+</section> 
+
+<section>
+  <div>
+    <h2>Working with UI States</h2>
+    <p class='major'>For the most basic UI functionality there three view states, <strong>Neutral</strong>, <strong>Enabled</strong> &amp; <strong>Disabled</strong>.</p>
+    
+    <div class='grid'>
+      <div class='column-4'>
+        <h3>Neutral</h3>
+        <div class='dot'></div>
+        <p>Just a simple dot with no state expressed in the markup.</p>
+      </div>
+      <div class='column-4'>
+        <h3>Enabled</h3>
+        <div class='dot' data-state='enabled'></div>
+        <p>The <code>[data-state]</code> notes that this dot is enabled.</p>
+      </div>
+      <div class='column-4'>
+        <h3>Disabled</h3>
+        <div class='dot' data-state='disabled'></div>
+        <p><code>[data-state]</code> disabled.</p>
+      </div>
+
+      <div class='column-12 make-snippet hidden'>
+<div class='dot'></div>
+<div class='dot' data-state='enabled'></div>
+<div class='dot' data-state='disabled'></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div>
+    <h2>Introducing the Radicals</h2>
+
+    <!-- toggle -->
+    <section>
+      <h4>Toggle</h4>
+      <div class='toggle dot'></div>
+    </section>
+
+    <section>
+      <h4>Neutralize Siblings</h4>
+      <p>Clicking any of the neutral dots will disable the active one.</p>
+      <div class='hbox'>
+        <div class='ns dot' data-state='enabled'></div>
+        <div class='ns dot'></div>
+        <div class='ns dot'></div>
+        <div class='ns dot'></div>
+      </div>
+    </section>
+
+    <h3>Now let's combine Toggle with Neutralize Siblings.</h3>
+
+    <section>
+      <h4>Selection Group</h4>
+      <p>Selection groups use the same pattern as either checkboxes or radios. They are toggles that have the option to neutralize their siblings.</p>
+      <div class='hbox sg'>
+        <div class='dot' data-state='enabled'></div>
+        <div class='dot'></div>
+        <div class='dot'></div>
+        <div class='dot'></div>
+      </div>
+
+      <div class='hbox sg-ms'>
+        <div class='dot' data-state='enabled'></div>
+        <div class='dot'></div>
+        <div class='dot'></div>
+        <div class='dot'></div>
+      </div>
+
+    </section>
+
+    <section>
+      <h4>Neutralize Ancestor</h4>
+      <div class='dot major' data-state='enabled'>
+        <div class='na dot'></div>
+      </div>
+    </section>
+
+  </div>
+</section>
+
+
+
+      </main>
+      <script title="jQuery from the CDN" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script src="js/prism.js"></script>
+      <script src="js/code.snippets.js"></script>
+      <script type="text/javascript" src="src/resig.inheritance.js"></script>
+      <script src="src/radical.toggle.js"></script>
+      <script src="src/radical.neutralize.siblings.js"></script>
+      <script src="src/radical.neutralize.ancestor.js"></script>
+      <script src="src/radical.selection.group.js"></script>
+      <script type="text/javascript" src="js/app.js"></script>
+  </body>
+</html>
