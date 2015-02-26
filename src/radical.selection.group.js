@@ -31,7 +31,6 @@
       this.options = (typeof options === 'undefined') ? DEFAULT_OPTIONS : options;
 
       this.options.multipleSelections = this.options.hasOwnProperty('multipleSelections') ? this.options.multipleSelections : true;
-      
       this.options.radicals = [window.Toggle];
       if(!this.options.multipleSelections){
         this.options.radicals.push(window.NeutralizeSiblings);
@@ -45,7 +44,6 @@
         var l = this.options.radicals.length;
         for(var iii = 0; iii < l; iii++){
           var r = new this.options.radicals[iii](cur,this.options);
-          console.log('r ',r);
         }
         if(cur.nodeType === 1){ // this may need to move lower.
           if(this.options.required === true && ii === 0 && this.element.querySelectorAll('[data-state="enabled"]').length === 0){
